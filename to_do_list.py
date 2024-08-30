@@ -1,5 +1,15 @@
-def add_task():
-    pass
+def add_task(task_list, completed_list):
+    task = input("Enter the task you would like to add: ")
+    if task.isnumeric():
+        print("Task name must be a string.\n")
+        return
+    elif task in task_list:
+        print("Task already exists in the list.\n")
+    #end if
+    
+    task_list.append(task)
+    completed_list.append(False)
+    return task_list, completed_list
 #end function
 
 def view_tasks():
@@ -13,6 +23,9 @@ def mark_complete():
 def delete_task():
     pass
 #end function
+
+task_list = []
+completed_list = []
 
 while True:
     print("Welcome to the To-Do List App!\n\nMenu:")
@@ -35,7 +48,7 @@ while True:
             print("Invalid choice. Please enter a number between 1 and 5.\n")
             continue
         elif choice == 1:
-            add_task()
+            task_list, completed_list = add_task(task_list, completed_list)
         elif choice == 2:
             delete_task()
         elif choice == 3:
