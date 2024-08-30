@@ -2,7 +2,7 @@ task_list = []
 completed_list = []
 
 def add_task():
-    task = input("Enter the task you would like to add: ")
+    task = input("\nEnter the task you would like to add: ")
     if task.isnumeric():
         print("Task name must be a string.\n")
         return
@@ -19,16 +19,33 @@ def add_task():
 def view_tasks():
     print("\nTo-do list:")
     for index in range(len(task_list)):
-        print(f"{index + 1}. {task_list[index]} ({completed_list[index]})")
+        print(f"{index + 1}. {task_list[index]} ({completed_list[index]})", end="\n\n")
     #end for
 #end function
 
 def mark_complete():
-    pass
+    task = input("\nEnter the task you would like to mark as complete: ")
+    if task not in task_list:
+        print("Task not found in the list.\n")
+        return
+    else:
+        index = task_list.index(task)
+        completed_list[index] = "Complete"
+        print(f"{task} has been marked as complete.\n")
+    #end if
 #end function
 
 def delete_task():
-    pass
+    task = input("\nEnter the task you would like to delete: ")
+    if task not in task_list:
+        print("Task not found in the list.\n")
+        return
+    else:
+        index = task_list.index(task)
+        task_list.pop(index)
+        completed_list.pop(index)
+        print(f"{task} has been deleted from the list.\n")
+    #end if
 #end function
 
 
@@ -63,7 +80,7 @@ while True:
             view_tasks()
         elif choice == 5:
             break
+        #end if
     #end try-except
-    
-    #end if
 #end while
+print("\nThank you for using the To-Do List App!")
