@@ -17,13 +17,20 @@ def add_task():
 #end function
 
 def view_tasks():
+    if len(task_list) == 0:
+        print("\nThe list is empty.\n")
+        return
     print("\nTo-do list:")
     for index in range(len(task_list)):
-        print(f"{index + 1}. {task_list[index]} ({completed_list[index]})", end="\n\n")
+        print(f"{index + 1}. {task_list[index]} ({completed_list[index]})")
     #end for
+    print()
 #end function
 
 def mark_complete():
+    if len(task_list) == 0:
+        print("\nThere are no items to mark complete.\n")
+        return
     task = input("\nEnter the task you would like to mark as complete: ")
     if task not in task_list:
         print("Task not found in the list.\n")
@@ -36,6 +43,9 @@ def mark_complete():
 #end function
 
 def delete_task():
+    if len(task_list) == 0:
+        print("\nThere are no items to delete.\n")
+        return
     task = input("\nEnter the task you would like to delete: ")
     if task not in task_list:
         print("Task not found in the list.\n")
@@ -48,8 +58,6 @@ def delete_task():
     #end if
 #end function
 
-
-
 while True:
     print("Welcome to the To-Do List App!\n\nMenu:")
     print("1. Add a task")
@@ -61,14 +69,14 @@ while True:
     try:
         choice = int(input("Please enter your choice: "))
     except ValueError:
-        print("Invalid input. Please enter a number.\n")
+        print("\nInvalid input. Please enter a number.\n")
         continue
     except Exception as e:
-        print("An error occurred. Please try again.\n")
+        print("\nAn error occurred. Please try again.\n")
         continue
     else:
         if choice < 1 or choice > 5:
-            print("Invalid choice. Please enter a number between 1 and 5.\n")
+            print("\nInvalid choice. Please enter a number between 1 and 5.\n")
             continue
         elif choice == 1:
             add_task()
