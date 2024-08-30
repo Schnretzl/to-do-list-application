@@ -12,12 +12,16 @@ def add_task():
     #end if
     
     task_list.append(task)
-    completed_list.append(False)
+    completed_list.append("Incomplete")
+    print(f"{task} successfully added to the list.\n")
     return task_list, completed_list
 #end function
 
 def view_tasks():
-    pass
+    print("\nTo-do list:")
+    for index in range(len(task_list)):
+        print(f"{index + 1}. {task_list[index]} ({completed_list[index]})")
+    #end for
 #end function
 
 def mark_complete():
@@ -57,7 +61,7 @@ while True:
         elif choice == 3:
             mark_complete()
         elif choice == 4:
-            view_tasks
+            view_tasks()
         elif choice == 5:
             break
     #end try-except
