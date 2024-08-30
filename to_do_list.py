@@ -2,7 +2,6 @@ task_list = []
 completed_list = []
 
 def add_task():
-    global task_list, completed_list
     task = input("Enter the task you would like to add: ")
     if task.isnumeric():
         print("Task name must be a string.\n")
